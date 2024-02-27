@@ -1,0 +1,16 @@
+header{
+    display : flex;
+
+}
+
+.headerContents{
+    display : flex;
+}
+
+.headerImg{
+    margin-right : 100px;
+}
+
+.headerContents li{
+    margin-right : 50px;
+}
