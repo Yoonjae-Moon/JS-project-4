@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exercise</title>
+    <script src="https://kit.fontawesome.com/2c827c8cca.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="style.css?after" rel="stylesheet" type="text/css" />
+    <!-- API호출 -->
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script language="JavaScript">
+        $(document).ready(function(){
+            $("#exerciseSearch").click(function(){
+        $.ajax({
+            method: 'GET',
+            url: 'https://api.api-ninjas.com/v1/exercises?muscle=' + $("#exerciseName").val() ,
+            headers: { 'X-Api-Key': 'IaGdzq5pIoLI4XCyr1RFTA==SF87FmE9sxHucAPr' },
+            contentType: 'application/json',
+            success: function (result) {
+                console.log(result[0].name);
+                console.log(result[0].instructions);
+                console.log(result[0].equipment);
+                console.log(result[0].difficulty);
+                $( ".exercise-results" ).append( "<strong>"+result[0].name+"</strong>" );
+                $( ".accordion-body-1" ).append( "<strong>"+result[0].instructions+"</strong>" );
+                $( ".accordion-body-2" ).append( "<strong>"+result[0].equipment+"</strong>" );
+                $( ".accordion-body-3" ).append( "<strong>"+result[0].difficulty+"</strong>" );
+            },
+            error: function ajaxError(jqXHR) {
+                console.error('Error: ', jqXHR.responseText);
+            }
+        })})});
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 타이틀 -->
+        <div class="title-exercise">
+            <h1>통증별 운동 추천</h1>
+        </div>
+
+        <!-- 검색 -->
+        <div class="exercise-keyword">
+            <input id="exerciseName" value="" type="text">
+            <button id="exerciseSearch">검색</button>
+        </div>
+
+        <!-- 검색 가이드 -->
+        <h5> 검색어 가이드 </h5>
+        <div class="serch-guide-img">
+            <div>
+                <div class="img-container">
+                    <img src="https://seomyeon.thezoneh.com/images/m_sub_shoulderrupture_03.jpg">
+                </div>
+                <p>traps</p>
+            </div>
+
+            <div>
+                <div class="img-container">
+                    <img src="https://lh3.googleusercontent.com/proxy/_QLJ8RIPLv9TssPp4Vz2-HHLWtrsopvhEfEXyWzDTgQUljriKPip0x4UKJd1lS5Ikwq6IoU9qDcpwN3HDBi-">
+                </div>
+                <p>neck</p>
+            </div>
+
+        </div>
+
+
+        <!-- 결과 나오는 영역 -->
+        <div>
+
+            <div class="exercise-results">
+                [운동명]
+
+            </div>
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            운동방법
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body-1"> </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            운동장비
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body-2"> </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            운동난이도
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body-3"> </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
